@@ -5,6 +5,7 @@ few samples and play them back immediately).
 
 import pyaudio
 import numpy as np
+import wave
 
 CHUNK = 44100
 FORMAT = pyaudio.paInt16
