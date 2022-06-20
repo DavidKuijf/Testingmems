@@ -23,7 +23,7 @@ stream = p.open(format=p.get_format_from_width(WIDTH),
 
 for i in range(0, 10):
     data = stream.read(CHUNK)
-    np.fromstring(data, np.float32)
+    np.frombuffer(data, np.float32)
 
 
 
