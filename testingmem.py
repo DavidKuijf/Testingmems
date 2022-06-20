@@ -4,7 +4,7 @@ few samples and play them back immediately).
 """
 
 import pyaudio
-import numpy
+import numpy as np
 
 CHUNK = 44100
 WIDTH = 2
@@ -23,7 +23,7 @@ stream = p.open(format=p.get_format_from_width(WIDTH),
 
 for i in range(0, 10):
     data = stream.read(CHUNK)
-    numpy.fromstring(data, 'Float32')
+    np.fromstring(data, np.float32)
 
 
 
