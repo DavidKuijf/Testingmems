@@ -11,7 +11,7 @@ from collections import deque
 CHUNK = 44100
 FORMAT = pyaudio.paInt16
 WIDTH = 2
-CHANNELS = 2
+CHANNELS = 1
 RATE = 44100
 RECORD_SECONDS = 5
 
