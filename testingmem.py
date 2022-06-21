@@ -45,8 +45,8 @@ for i in range(0, 10):
     frames.appendleft(data)
     data_array = np.frombuffer(data, dtype=np.int16)
     yeet1, yeet2 = fft_calc(data_array)
-    print(yeet1)
-    #print(yeet2)
+    #print(yeet1)
+    print(yeet2)
 
 stream.stop_stream()
 stream.close()
