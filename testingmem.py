@@ -42,9 +42,7 @@ for i in range(0, 10):
     frames.pop()
     frames.appendleft(data)
     data_array = np.frombuffer(data, dtype=np.int16)
-    fftd = fft_calc(data_array)
-    imaging = im.fromarray(fftd)
-    imaging.save('graph.png')
+    print(fft_calc(data_array))
 
 stream.stop_stream()
 stream.close()
