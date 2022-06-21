@@ -40,8 +40,8 @@ for i in range(0, 10):
     data = stream.read(CHUNK)
     frames.pop()
     frames.appendleft(data)
-    np.frombuffer(data, dtype=np.int16)
-    print(fft_calc(data))
+    data_array = np.frombuffer(data, dtype=np.int16)
+    print(fft_calc(data_array))
 
 stream.stop_stream()
 stream.close()
