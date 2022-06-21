@@ -7,7 +7,6 @@ import pyaudio
 import numpy as np
 import wave
 from collections import deque
-from PIL import Image as im
 
 CHUNK = 44100
 FORMAT = pyaudio.paInt16
@@ -18,6 +17,7 @@ RECORD_SECONDS = 5
 
 
 p = pyaudio.PyAudio()
+np.set_printoptions(threshold=np.nan)
 
 stream = p.open(format=p.get_format_from_width(WIDTH),
                 channels=CHANNELS,
