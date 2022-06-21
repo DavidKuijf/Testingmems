@@ -7,6 +7,7 @@ import pyaudio
 import numpy as np
 import wave
 from collections import deque
+from PIL import Image as im
 
 CHUNK = 44100
 FORMAT = pyaudio.paInt16
@@ -41,7 +42,9 @@ for i in range(0, 10):
     frames.pop()
     frames.appendleft(data)
     data_array = np.frombuffer(data, dtype=np.int16)
-    print(fft_calc(data_array))
+    fftd = fft_calc(data_array)
+    imaging = im.fromarray(fftd)
+    imaging.save('graph.png')
 
 stream.stop_stream()
 stream.close()
