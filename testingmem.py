@@ -30,20 +30,23 @@ stream = p.open(format=p.get_format_from_width(WIDTH),
 frames = deque([0,0,0,0,0,0,0,0,0,0])
     
 def fft_calc(data_vec):
-    data_vec = data_vec*np.hanning(len(data_vec)) # hanning window
+    weighting = np.hanning(len(data_vec)) # hanning window
+    data_vec = data_vec*weighting
     N_fft = len(data_vec) # length of fft
-    freq_vec = (float(CHUNK)*np.arange(0,int(N_fft/2)))/N_fft # fft frequency vector
+    freq_vec = (float(RATE)*np.arange(0,int(N_fft/2)))/N_fft # fft frequency vector
     fft_data_raw = np.abs(np.fft.fft(data_vec)) # calculate FFT
     fft_data = fft_data_raw[0:int(N_fft/2)]/float(N_fft) # FFT amplitude scaling
     fft_data[1:] = 2.0*fft_data[1:] # single-sided FFT amplitude doubling
     return freq_vec,fft_data
 
 for i in range(0, 10):
-    data = stream.read(CHUNK)
+    data = stream.read(CHUNK,False)
     frames.pop()
     frames.appendleft(data)
     data_array = np.frombuffer(data, dtype=np.int16)
-    print(fft_calc(data_array))
+    yeet1, yeet2 = fft_calc(data_array)
+    print(yeet1)
+    #print(yeet2)
 
 stream.stop_stream()
 stream.close()
